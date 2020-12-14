@@ -5,10 +5,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using SectorData.DataContext;
+using SectorData.Domain.Interfaces;
+using SectorData.Domain.Repository;
+using SectorData.Domain.Services;
+using AutoMapper;
 
 namespace SectorData
 {
@@ -25,6 +31,12 @@ namespace SectorData
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            var connection = Configuration.GetConnectionString("Constr");
+            services.AddDbContext<SectorContext>(options => options.UseSqlServer(connection));
+            services.AddScoped<ISectorRepository, SectorRepository>();
+            services.AddScoped<ISectorService, SectorService>();
+            
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

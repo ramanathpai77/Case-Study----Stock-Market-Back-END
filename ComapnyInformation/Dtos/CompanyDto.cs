@@ -28,5 +28,7 @@ namespace ComapnyInformation.Dtos
         public string Description { get; set; }
         [Required]
         public string StockCode { get; set; }
+        [Required]
+        public int StockPrice { get; set; }
     }
 }

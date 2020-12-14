@@ -5,10 +5,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using StockExchange.DataContext;
+using StockExchange.Domain.Interfaces;
+using StockExchange.Domain.Repository;
+using StockExchange.Domain.Services;
 
 namespace StockExchange
 {
@@ -25,6 +30,11 @@ namespace StockExchange
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            var connection = Configuration.GetConnectionString("Constr");
+            services.AddDbContext<SEContext>(options => options.UseSqlServer(connection));
+            services.AddScoped<ISERepository, SERepository>();
+            services.AddScoped<ISEServices, SEServices>();
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

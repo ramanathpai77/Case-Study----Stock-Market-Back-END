@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ComapnyInformation.Dtos
+using ComapnyInformation.Dtos;
+using ComapnyInformation.Entities;
 
 namespace ComapnyInformation.Domain.Interfaces
 {
-    interface IIPOsService
+    public interface IIPOsService
     {
-        IEnumerable<IPOsDto> getCompanyIPODetails();
+        IEnumerable<IPOs> getCompanyIPODetails();
+        bool AddIPO(IPOs i);
     }
 }
