@@ -35,10 +35,10 @@ namespace ComapnyInformation.Controllers
             throw new Exception();
         }
        
-        [HttpGet("StockPrice/{ccode}/{se}/{from}/{to}")]
-        public IActionResult GetStockPrice(string ccode, int se,DateTime from, DateTime to)
+        [HttpGet("StockPrice/{ccode}")]
+        public IActionResult GetStockPrice(string ccode)
         {
-            var q = service.GetStockPrice(ccode, se, from, to);
+            var q = service.GetStockPrice(ccode);
             return Ok(q);
         }
         [HttpPost]

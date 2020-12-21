@@ -42,7 +42,7 @@ namespace StockExchangeTest
             Assert.AreEqual(200, Result.StatusCode.Value);
         }
         [Test]
-        public void AddStockExchangeTest()
+        public void StockExchangeTest_se()
         {
 
             var Result = Se.GetStockExchanges() as ObjectResult;

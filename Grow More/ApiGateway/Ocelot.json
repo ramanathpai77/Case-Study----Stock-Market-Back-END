@@ -5,26 +5,49 @@
             "DownstreamScheme": "http",
             "DownstreamPathTemplate": "/{url}",
             "ServiceName": "CompanyCatalog",
-            "UpstreamPathTemplate"
-                :
-                "/api/companyservice/{url}",
-                "UpstreamHttpMethods"
-                :
-                [ "GET", "POST", "PUT", "DELETE" ]
+            "UpstreamPathTemplate": "/api/companyservice/{url}",
+            "UpstreamHttpMethods": [ "GET", "POST", "PUT", "DELETE" ],
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "Ram",
+                "AllowedScopes": []
+            }
+
+
         },
         {
             "DownstreamScheme": "http",
             "DownstreamPathTemplate": "/{url}",
             "ServiceName": "SectorCatalog",
             "UpstreamPathTemplate": "/api/sectorservice/{url}",
-            "UpstreamHttpMethods": [ "GET", "POST", "PUT", "DELETE" ]
+            "UpstreamHttpMethods": [ "GET", "POST", "PUT", "DELETE" ],
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "Ram",
+                "AllowedScopes": []
+            }
+
+
+
         },
         {
             "DownstreamScheme": "http",
             "DownstreamPathTemplate": "/{url}",
             "ServiceName": "StockExchange",
             "UpstreamPathTemplate": "/api/se/{url}",
-            "UpstreamHttpMethods": [ "GET", "POST", "PUT", "DELETE" ]
+            "UpstreamHttpMethods": [ "GET", "POST", "PUT", "DELETE" ],
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "Ram",
+                "AllowedScopes": []
+            }
+
+
+
+        },
+        {
+            "DownstreamScheme": "http",
+            "DownstreamPathTemplate": "/api/{url}",
+            "ServiceName": "UserCredentials",
+            "UpstreamPathTemplate": "/api/auth/{url}",
+            "UpstreamHttpMethods": [ "POST" ]
         }
     ],
     "GlobalConfiguration": {

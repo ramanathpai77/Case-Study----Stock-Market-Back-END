@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Consul;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -35,6 +36,10 @@ namespace StockExchange
             services.AddScoped<ISERepository, SERepository>();
             services.AddScoped<ISEServices, SEServices>();
             services.AddCors();
+            services.AddSingleton<IConsulClient, ConsulClient>(options => new ConsulClient(config =>
+            {
+                config.Address = new Uri(Configuration["ConsulConfig:Host"]);
+            }));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,6 +50,17 @@ namespace StockExchange
                 app.UseDeveloperExceptionPage();
             }
 
+            var client = app.ApplicationServices.GetRequiredService<IConsulClient>();
+            var registration = new AgentServiceRegistration()
+            {
+                Address = "localhost",
+                Port = 61954,
+                Name = Configuration["ConsulConfig:ServiceName"],
+                ID = Configuration["ConsulConfig:ServiceId"]
+            };
+            var applifetime = app.ApplicationServices.GetRequiredService<IHostApplicationLifetime>();
+            applifetime.ApplicationStarted.Register(() => client.Agent.ServiceRegister(registration).ConfigureAwait(true));
+            applifetime.ApplicationStopped.Register(() => client.Agent.ServiceDeregister(registration.ID).ConfigureAwait(true));
             app.UseRouting();
 
             app.UseAuthorization();

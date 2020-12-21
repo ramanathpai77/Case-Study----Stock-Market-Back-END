@@ -9,6 +9,6 @@ namespace LoginCred.Domain.Interfaces
    public  interface IUserServices
     {
         public bool SignUP(User s);
-        public bool login(int id, string pass);
+        public string login(Credentials model);
     }
 }

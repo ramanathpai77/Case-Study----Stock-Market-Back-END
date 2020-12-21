@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using ComapnyInformation.DataContext;
 using ComapnyInformation.Domain.Interfaces;
 using ComapnyInformation.Domain.Repositories;
+using Consul;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -35,7 +36,13 @@ namespace ComapnyInformation
             services.AddScoped<ICompanyService, CompanyService>();
             services.AddScoped<IIPOsRepository, IPOsRepository>();
             services.AddScoped<IIPOsService, IPOsService>();
+
             services.AddCors();
+            services.AddSingleton<IConsulClient, ConsulClient>(options => new ConsulClient(config =>
+            {
+                config.Address = new Uri(Configuration["ConsulConfig:Host"]);
+            }));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,6 +52,17 @@ namespace ComapnyInformation
             {
                 app.UseDeveloperExceptionPage();
             }
+            var client = app.ApplicationServices.GetRequiredService<IConsulClient>();
+            var registration = new AgentServiceRegistration()
+            {
+                Address = "localhost",
+                Port = 61933,
+                Name = Configuration["ConsulConfig:ServiceName"],
+                ID = Configuration["ConsulConfig:ServiceId"]
+            };
+            var applifetime = app.ApplicationServices.GetRequiredService<IHostApplicationLifetime>();
+            applifetime.ApplicationStarted.Register(() => client.Agent.ServiceRegister(registration).ConfigureAwait(true));
+            applifetime.ApplicationStopped.Register(() => client.Agent.ServiceDeregister(registration.ID).ConfigureAwait(true));
 
             app.UseRouting();
 

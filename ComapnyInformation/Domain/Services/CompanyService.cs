@@ -57,9 +57,9 @@ namespace ComapnyInformation.Domain.Repositories
 
        
 
-        public IEnumerable<int> GetStockPrice(string stockcode, int se,DateTime fromdate, DateTime todate)
+        public IEnumerable<int> GetStockPrice(string stockcode)
         {
-            var q = repository.GetStockPrice(stockcode, se, fromdate, todate);
+            var q = repository.GetStockPrice(stockcode);
             return q;
             throw new NotImplementedException();
         }

@@ -12,7 +12,7 @@ namespace ComapnyInformation.Domain.Interfaces
         
         IEnumerable<Company> GetAllCompanies();
         IEnumerable<Company> GetCompany(string cname);
-        public IEnumerable<int> GetStockPrice(string stockcode,int se, DateTime fromdate, DateTime todate );
+        public IEnumerable<int> GetStockPrice(string stockcode );
 
         public bool AddCompany(Company c);
         public bool AddStockPrice(StockPrice sp);

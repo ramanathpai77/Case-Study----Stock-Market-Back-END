@@ -42,7 +42,7 @@ namespace SectorDataTest
             Assert.AreEqual(200, Result.StatusCode.Value);
         }
         [Test]
-        public void AddStockExchangeTest()
+        public void SectoreTest_sector()
         {
 
             var Result = sector.GetSectors() as ObjectResult;

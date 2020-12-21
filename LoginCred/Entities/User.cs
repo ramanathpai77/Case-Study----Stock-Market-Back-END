@@ -12,10 +12,12 @@ namespace LoginCred.Entities
         public int UserId { get; set; }
         public string UserName { get; set; }
         public string PassWord { get; set;}
-        public bool UserType { get; set; } //admin means true 
+        public string UserType { get; set; } 
         public string Email { get; set; }
-        public long PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
         public bool Confirmed { get; set; }
+        public string VerificationCode { get; set; }
+
 
     }
 }

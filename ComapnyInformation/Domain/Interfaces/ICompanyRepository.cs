@@ -11,7 +11,7 @@ namespace ComapnyInformation.Domain.Interfaces
         public IEnumerable<Company> GetAllCompanies();
         public IEnumerable<Company> GetCompany(string cname);
         
-        public  IEnumerable<int> GetStockPrice(string stockcode,int SE,DateTime fromdate,DateTime todate);
+        public  IEnumerable<int> GetStockPrice(string stockcode);
         public bool AddCompany(Company c);
         public bool AddStockPrice(StockPrice sp);
 

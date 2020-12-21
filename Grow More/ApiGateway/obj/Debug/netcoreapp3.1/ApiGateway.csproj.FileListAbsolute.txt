@@ -34,3 +34,10 @@ F:\Case Study\Grow More\ApiGateway\bin\Debug\netcoreapp3.1\Consul.dll
 F:\Case Study\Grow More\ApiGateway\bin\Debug\netcoreapp3.1\Ocelot.Provider.Consul.dll
 F:\Case Study\Grow More\ApiGateway\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netstandard1.3\System.Net.Http.WinHttpHandler.dll
 F:\Case Study\Grow More\ApiGateway\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard1.3\System.Net.Http.WinHttpHandler.dll
+F:\Case Study\Grow More\ApiGateway\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+F:\Case Study\Grow More\ApiGateway\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+F:\Case Study\Grow More\ApiGateway\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+F:\Case Study\Grow More\ApiGateway\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+F:\Case Study\Grow More\ApiGateway\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+F:\Case Study\Grow More\ApiGateway\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+F:\Case Study\Grow More\ApiGateway\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll

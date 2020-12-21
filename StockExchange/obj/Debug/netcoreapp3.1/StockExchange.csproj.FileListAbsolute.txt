@@ -61,3 +61,4 @@ F:\Case Study\StockExchange\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard
 F:\Case Study\StockExchange\obj\Debug\netcoreapp3.1\StockExchange.csproj.CopyComplete
 F:\Case Study\StockExchange\bin\Debug\netcoreapp3.1\Humanizer.dll
 F:\Case Study\StockExchange\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+F:\Case Study\StockExchange\bin\Debug\netcoreapp3.1\Consul.dll

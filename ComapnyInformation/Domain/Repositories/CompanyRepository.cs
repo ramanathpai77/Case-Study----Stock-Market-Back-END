@@ -55,15 +55,13 @@ namespace ComapnyInformation.Domain.Repositories
 
       
 
-        public IEnumerable<int> GetStockPrice(string stockcode,int SE, DateTime fromdate, DateTime todate)
+        public IEnumerable<int> GetStockPrice(string stockcode)
         {
             var query = from x in context.Company
                         join y in context.StockPrice
                         on x.CCode equals y.CompanyCode
                         where x.CCode == stockcode
-                        where y.SEId==SE
-                        where y.datetime <=todate
-                        where y.datetime >= fromdate
+                       
                         select y.CurrentPrice;
             if (query.Count()==0)
             {
